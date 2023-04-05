@@ -26,20 +26,21 @@
             <strong>LISTADO DE ALUMNOS</strong>
           </div>
           <div class="col-md-6 text-end">
-            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-cursos"><i class="bi bi-plus-square-fill"></i> Agregar curso</button>
+            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-alumnos"><i class="bi bi-plus-square-fill"></i> Registrar alumno</button>
           </div>
         </div>
       </div>
       <div class="card-body">
+        <div class="table-responsive">
         <table class="table table-sm table-striped" id="tabla-cursos">
           <colgroup> <!-- Permite ordenar las tablas-->
+            <col width = "5%">
+            <col width = "11%">
+            <col width = "11%">
             <col width = "10%">
-            <col width = "10%">
-            <col width = "10%">
-            <col width = "10%">
-            <col width = "10%">
-            <col width = "10%">
-            <col width = "10%">
+            <col width = "13%">
+            <col width = "11%">
+            <col width = "12%">
             <col width = "10%">
             <col width = "10%">
           </colgroup>
@@ -60,25 +61,118 @@
           <!-- DATOS DE PRUEBA -->
           <tbody>
             <tr>
-              <th>1</th>
-              <th>Yerén Carbajal</th>
-              <th>Margarita Elena</th>
-              <th>218191926</th>
-              <th>margaritayeren@gmail.com</th>
-              <th>920490818</th>
-              <th>Av.Centenario</th>
-              <th>Adm Industrial</th>
-              <th>6</th>
-              <th>Eliminar/Editar</th>
+              <td>1</td>
+              <td>Yerén Carbajal</td>
+              <td>Margarita Elena</td>
+              <td>218191926</td>
+              <td>margaritayeren@gmail.com</td>
+              <td>920490818</td>
+              <td>Av.Centenario</td>
+              <td>Adm Industrial</td>
+              <td>6</td>
+              <td>
+                <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
+                <a href="#" class="btn btn-info btn-sm"><i class="bi bi-pencil-fill"></i></a>
+              </td>
             </tr>
-          </tbody>
+          </tbody> <!-- FIN DE DATOS PRUEBA-->
         </table>
       </div>
-      <div class="card-footer text-end">
-        <button class="btn btn-primary btn-sm" id="actualizar">Actualizar datos</button>
+    </div>
+    <div class="card-footer text-end">
+        <button class="btn btn-primary btn-sm" id="actualizar">Actualizar alumnos</button>
+    </div>
+  </div>
+</div> <!-- FIN DEL CONTAINER -->
+
+  <!-- ZONA DE MODAL -->
+  <div class="modal fade" id="modal-registro-alumnos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-light">
+          <h5 class="modal-title" id="modalTitleId">Registro alumnos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="formulario-alumnos">
+            <div class="mb-3">
+              <!-- CAMPO DE APELLIDOS -->
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input type="text" class="form-control form-control-sm" id="apellidos">
+            </div>
+            
+            <!-- CAMPO DE NOMBRES -->
+            <div class="mb-3">
+              <label for="nombres" class="form-label">Nombres</label>
+              <input type="text" class="form-control form-control-sm" id="nombres">
+            </div>
+            
+            <!-- CAMPO DE DNI -->
+            <div class="mb-3">
+              <label for="dni" class="form-label">Dni</label>
+              <input type="text" class="form-control form-control-sm" id="dni">
+            </div>
+            
+            <!-- CAMPO DE TELÉFONO -->
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Celular</label>
+              <input type="text" class="form-control form-control-sm" id="telefono">
+            </div>
+            
+            <!-- CAMPO DE DIRECCIÓN -->
+            <div class="mb-3">
+              <label for="direccion" class="form-label">Dirección</label>
+              <input type="text" class="form-control form-control-sm" id="direccion">
+            </div>
+            
+            <!-- CAMPO DE CORREO -->
+            <div class="mb-3">
+              <label for="correo" class="form-label">Correo</label>
+              <input type="text" class="form-control form-control-sm" id="correo">
+            </div>
+            
+            <!-- CAMPO DE NOMBRE DE LA CARRERA -->
+            <div class="mb-3">
+              <label for="nombrecarrera" class="form-label">Carrera</label>
+              <select id="nombrecarrera" class="form-select form-select-sm">
+                <option value="">Seleccione</option>
+                <option value="Ing Software con IA">Ing Software con IA</option>
+                <option value="Diseño">Diseño Gráfico Digital</option>
+                <option value="Administración">Administración Industrial</option>
+                <option value="Administración">Administración de Empresas</option>
+                <option value="Mecánico Mantenimiento">Mecánico Mantenimiento</option>
+              </select>
+            </div>
+            
+            <!-- CAMPO DE NIVEL ACADÉMICO -->
+            <div class="mb-3">
+              <label for="nivelacademico" class="form-label">Semestre</label>
+              <select id="nivelacademico" class="form-select form-select-sm">
+                <option value="">Seleccione</option>
+                <option value="1">Semestre 1</option>
+                <option value="2">Semestre 2</option>
+                <option value="3">Semestre 3</option>
+                <option value="4">Semestre 4</option>
+                <option value="5">Semestre 5</option>
+                <option value="6">Semestre 6</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary btn-sm">Guardar</button>
+        </div>
       </div>
     </div>
-  </div> <!-- FIN DEL CONTAINER -->
+  </div>
+  
+  <!-- Optional: Place to the bottom of scripts -->
+  <script>
+    const myModal = new bootstrap.Modal(document.getElementById('modal-registro-alumnos'), options)
+  </script> 
+  <!-- FIN DE LA ZONA DEL MODAL -->
+
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
