@@ -83,6 +83,15 @@ CALL spu_alumnos_registrar('Muñoz Quispe','Alonso Enrique','12345678','alonsoM@
 CALL spu_alumnos_listar();
 
 
+-- ------------------------------------------------------------
+-- PROCEDIMIENTO ALMACENADO PARA ELIMINAR ALUMNOS (INHABILITARA)
+-- ------------------------------------------------------------
+DELIMITER $$
+CREATE PROCEDURE spu_alumnos_eliminar(IN idalumno_	INT)
+BEGIN
+	UPDATE alumnos SET estado = '0'
+	WHERE idalumno = idalumno_;
+END $$
 
 
 
