@@ -61,9 +61,11 @@ if(isset($_POST['operacion'])){
 
   // CREANDO LA OPCION DE MODIFICAR (UPDATE)
   if($_POST['operacion'] == 'modificar'){
-    // Recopilando los datos que la vista nos envía
-    $idalumno = $_POST['idalumno'];
+
+    // Paso 1: Recopilando los datos que la vista nos envía (FROM, utilizando AJAX)
+    // $_POST: Esto es lo que se nos envía desde FORMULARIO (Modal)
     $datosForm = [
+      'idalumno'              => $_POST['idalumno'],
       'apellidos'             => $_POST['apellidos'],
       'nombres'               => $_POST['nombres'],
       'dni'                   => $_POST['dni'],
@@ -73,10 +75,10 @@ if(isset($_POST['operacion'])){
       'nombrecarrera'         => $_POST['nombrecarrera'],
       'nivelacademico'        => $_POST['nivelacademico']
     ];
-
-     // Enviar el arreglo como parámetro del método actualizar
-     $alumno->modificarAlumnos($idalumno, $datosForm);
-
+  
+    // Paso 2: Enviar el arreglo como parámetro del método modificar
+    $alumno->modificarAlumnos($datosForm);
+  
   }
 
   if($_POST['operacion'] == 'eliminar'){

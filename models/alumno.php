@@ -69,7 +69,7 @@ class Alumno extends Conexion{
    // Actualizar
    public function modificarAlumnos($idalumno, $datos = []){
     try {
-      $consulta = $this->accesoBD->prepare("CALL spu_alumnos_modificar(?,?,?,?,?,?,?,?)");
+      $consulta = $this->accesoBD->prepare("CALL spu_alumnos_modificar(?,?,?,?,?,?,?,?,?)");
       $consulta->execute(
         array(
           $idalumno,
@@ -88,6 +88,7 @@ class Alumno extends Conexion{
       die($e->getMessage());
     }
    }
+
 
 }
 

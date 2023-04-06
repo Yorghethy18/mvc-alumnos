@@ -84,47 +84,47 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="" id="formulario-alumnos">
+          <form action="" id="formulario-alumnos" novalidate>
             <div class="mb-3">
               <!-- CAMPO DE APELLIDOS -->
               <label for="apellidos" class="form-label">Apellidos</label>
-              <input type="text" class="form-control form-control-sm" id="apellidos">
+              <input type="text" class="form-control form-control-sm" id="apellidos" required>
             </div>
             
             <!-- CAMPO DE NOMBRES -->
             <div class="mb-3">
               <label for="nombres" class="form-label">Nombres</label>
-              <input type="text" class="form-control form-control-sm" id="nombres">
+              <input type="text" class="form-control form-control-sm" id="nombres" required>
             </div>
             
             <!-- CAMPO DE DNI -->
             <div class="mb-3">
               <label for="dni" class="form-label">Dni</label>
-              <input type="text" class="form-control form-control-sm" id="dni">
+              <input type="text" class="form-control form-control-sm" id="dni" required>
             </div>
             
             <!-- CAMPO DE CORREO -->
             <div class="mb-3">
               <label for="correo" class="form-label">Correo</label>
-              <input type="text" class="form-control form-control-sm" id="correo">
+              <input type="text" class="form-control form-control-sm" id="correo" required>
             </div>
 
             <!-- CAMPO DE TELÉFONO -->
             <div class="mb-3">
               <label for="telefono" class="form-label">Celular</label>
-              <input type="text" class="form-control form-control-sm" id="telefono">
+              <input type="text" class="form-control form-control-sm" id="telefono" required>
             </div>
             
             <!-- CAMPO DE DIRECCIÓN -->
             <div class="mb-3">
               <label for="direccion" class="form-label">Dirección</label>
-              <input type="text" class="form-control form-control-sm" id="direccion">
+              <input type="text" class="form-control form-control-sm" id="direccion" required>
             </div>
             
             <!-- CAMPO DE NOMBRE DE LA CARRERA -->
             <div class="mb-3">
               <label for="nombrecarrera" class="form-label">Carrera</label>
-              <select id="nombrecarrera" class="form-select form-select-sm">
+              <select id="nombrecarrera" class="form-select form-select-sm" required>
                 <option value="">Seleccione</option>
                 <option value="Ing Software con IA">Ing Software con IA</option>
                 <option value="Diseño Gráfico Digital">Diseño Gráfico Digital</option>
@@ -137,7 +137,7 @@
             <!-- CAMPO DE NIVEL ACADÉMICO -->
             <div class="mb-3">
               <label for="nivelacademico" class="form-label">Semestre</label>
-              <select id="nivelacademico" class="form-select form-select-sm">
+              <select id="nivelacademico" class="form-select form-select-sm" required>
                 <option value="">Seleccione</option>
                 <option value="1">Semestre 1</option>
                 <option value="2">Semestre 2</option>
@@ -151,7 +151,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa-solid fa-circle-xmark"></i> Cerrar</button>
-          <button type="button" class="btn btn-outline-success btn-sm" id="guardar-alumno"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+          <button type="submit" class="btn btn-outline-success btn-sm" id="guardar-alumno"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
           
         </div>
       </div>
@@ -189,41 +189,59 @@
 
       // Registrar un curso
       function registrarAlumnos(){
-        // Pendiente validación de los cursos
-        if(confirm("¿Está seguro de registrar a este nuevo alumno?")){
-          $.ajax({
-            url: '../controllers/alumno.controller.php',
-            type: 'POST',
-            data: {
-              operacion         : 'registrar',
-              apellidos         : $("#apellidos").val(),
-              nombres           : $("#nombres").val(),
-              dni               : $("#dni").val(),
-              correo            : $("#correo").val(),
-              telefono          : $("#telefono").val(),
-              direccion         : $("#direccion").val(),
-              nombrecarrera     : $("#nombrecarrera").val(),
-              nivelacademico    : $("#nivelacademico").val()
-            },
-            success: function(result){
-              if (result == ""){
-                // Reiniciar el formulario
-                $("#formulario-alumnos")[0].reset();
-                
-                // Actualizar la tabla
-                mostrarAlumnos();
+    // Validar campos de formulario
+      const apellidos       = $("#apellidos").val();
+      const nombres         = $("#nombres").val();
+      const dni             = $("#dni").val();
+      const correo          = $("#correo").val();
+      const telefono        = $("#telefono").val();
+      const direccion       = $("#direccion").val();
+      const nombrecarrera   = $("#nombrecarrera").val();
+      const nivelacademico  = $("#nivelacademico").val();
 
-                // Cerrar el modal
-                $("#modal-registro-alumnos").modal('hide');
-              }
-            }
-          });
+  if (!apellidos || !nombres || !dni || !correo || !telefono || !direccion || !nombrecarrera || !nivelacademico) {
+    alert('Por favor, complete todos los campos');
+    return;
+  }
+
+  // Si se han completado todos los campos, se procede a registrar el alumno
+  if(confirm("¿Está seguro de registrar a este nuevo alumno?")){
+    $.ajax({
+      url: '../controllers/alumno.controller.php',
+      type: 'POST',
+      data: {
+        operacion         : 'registrar',
+        apellidos         : apellidos,
+        nombres           : nombres,
+        dni               : dni,
+        correo            : correo,
+        telefono          : telefono,
+        direccion         : direccion,
+        nombrecarrera     : nombrecarrera,
+        nivelacademico    : nivelacademico
+      },
+      success: function(result){
+        if (result == ""){
+          // Reiniciar el formulario
+          $("#formulario-alumnos")[0].reset();
+          
+          
+          // Actualizar la tabla
+          mostrarAlumnos();
+
+          // Cerrar el modal
+          $("#modal-registro-alumnos").modal('hide');
         }
       }
-
+    });
+  }
+}
 
       //Evento
       $("#guardar-alumno").click(registrarAlumnos);
+
+      //MODIFICAR
+      function modificarAlumnos(){}
 
       // Al pulsar click sobre el botón ROJO, se elimine el registro
       // Detectaremos eventos de losobjetos creados de manera asíncrona en...
