@@ -67,9 +67,22 @@ class Alumno extends Conexion{
    }
 
    // Actualizar
-   public function actualizarAlumnos(){
+   public function modificarAlumnos($idalumno, $datos = []){
     try {
-      
+      $consulta = $this->accesoBD->prepare("CALL spu_alumnos_modificar(?,?,?,?,?,?,?,?)");
+      $consulta->execute(
+        array(
+          $idalumno,
+          $datos["apellidos"],
+          $datos["nombres"], 
+          $datos["dni"], 
+          $datos["correo"], 
+          $datos["telefono"],
+          $datos["direccion"],
+          $datos["nombrecarrera"],
+          $datos["nivelacademico"]
+        )
+      );
     } 
     catch (Exception $e) {
       die($e->getMessage());

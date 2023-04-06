@@ -94,5 +94,33 @@ BEGIN
 END $$
 
 
+-- -----------------------------------------------
+-- PROCEDIMIENTO ALMACENADO PARA MODIFICAR ALUMNOS
+-- -----------------------------------------------
+DELIMITER $$
+CREATE PROCEDURE spu_alumnos_modificar(
+	IN idalumno_ 			INT,
+	IN apellidos_			VARCHAR(40),
+	IN nombres_ 			VARCHAR(40),
+	IN dni_					CHAR(8),
+	IN correo_				VARCHAR(50),
+	IN telefono_ 			CHAR(9),
+	IN direccion_			VARCHAR(50),
+	IN nombrecarrera_ 	VARCHAR(40),
+	IN nivelacademico_ 	INT
+)
+BEGIN
+	UPDATE alumnos SET
+		apellidos 			= apellidos_,
+		nombres				= nombres_,
+		dni 					= dni_,
+		correo 				= correo_,
+		telefono 			= telefono_,
+		direccion 			= direccion_,
+		nombrecarrera 		= nombrecarrera_,
+		nivelacademico 	= nivelacademico_
+		WHERE idalumno 	= idalumno_;
+END $$
+
 
 

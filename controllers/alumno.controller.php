@@ -59,6 +59,26 @@ if(isset($_POST['operacion'])){
 
   }
 
+  // CREANDO LA OPCION DE MODIFICAR (UPDATE)
+  if($_POST['operacion'] == 'modificar'){
+    // Recopilando los datos que la vista nos envía
+    $idalumno = $_POST['idalumno'];
+    $datosForm = [
+      'apellidos'             => $_POST['apellidos'],
+      'nombres'               => $_POST['nombres'],
+      'dni'                   => $_POST['dni'],
+      'correo'                => $_POST['correo'],
+      'telefono'              => $_POST['telefono'],
+      'direccion'             => $_POST['direccion'],
+      'nombrecarrera'         => $_POST['nombrecarrera'],
+      'nivelacademico'        => $_POST['nivelacademico']
+    ];
+
+     // Enviar el arreglo como parámetro del método actualizar
+     $alumno->modificarAlumnos($idalumno, $datosForm);
+
+  }
+
   if($_POST['operacion'] == 'eliminar'){
     $alumno->eliminarAlumnos($_POST['idalumno']);
   }
