@@ -64,7 +64,6 @@
           </thead>
           <!-- DATOS DE PRUEBA -->
           <tbody>
-
           </tbody> <!-- FIN DE DATOS PRUEBA-->
         </table>
       </div>
@@ -160,6 +159,90 @@
 
   <!-- FIN DE LA ZONA DEL MODAL -->
 
+   <!-- ZONA DE MODAL EDITAR ALUMNOS (UPDATE) -->
+   <div class="modal fade" id="modal-editar-alumnos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-light">
+          <h5 class="modal-title" id="modalTitleId">Modificación alumnos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="formulario-alumnos" novalidate>
+            <div class="mb-3">
+              <!-- CAMPO DE APELLIDOS -->
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input type="text" class="form-control form-control-sm" id="apellidos-editar" required>
+            </div>
+            
+            <!-- CAMPO DE NOMBRES -->
+            <div class="mb-3">
+              <label for="nombres" class="form-label">Nombres</label>
+              <input type="text" class="form-control form-control-sm" id="nombres-editar" required>
+            </div>
+            
+            <!-- CAMPO DE DNI -->
+            <div class="mb-3">
+              <label for="dni" class="form-label">Dni</label>
+              <input type="text" class="form-control form-control-sm" id="dni-editar" required>
+            </div>
+            
+            <!-- CAMPO DE CORREO -->
+            <div class="mb-3">
+              <label for="correo" class="form-label">Correo</label>
+              <input type="text" class="form-control form-control-sm" id="correo-editar" required>
+            </div>
+
+
+            <!-- CAMPO DE TELÉFONO -->
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Celular</label>
+              <input type="text" class="form-control form-control-sm" id="telefono-editar" required>
+            </div>
+            
+            <!-- CAMPO DE DIRECCIÓN -->
+            <div class="mb-3">
+              <label for="direccion" class="form-label">Dirección</label>
+              <input type="text" class="form-control form-control-sm" id="direccion-editar" required>
+            </div>
+            
+            <!-- CAMPO DE NOMBRE DE LA CARRERA -->
+            <div class="mb-3">
+              <label for="nombrecarrera-editar" class="form-label">Carrera</label>
+              <select id="nombrecarrera-editar" class="form-select form-select-sm" required>
+                <option value="">Seleccione</option>
+                <option value="Ing Software con IA">Ing Software con IA</option>
+                <option value="Diseño Gráfico Digital">Diseño Gráfico Digital</option>
+                <option value="Administración Industrial">Administración Industrial</option>
+                <option value="Administración de Empresas">Administración de Empresas</option>
+                <option value="Mecánico Mantenimiento">Mecánico Mantenimiento</option>
+              </select>
+            </div>
+            
+            <!-- CAMPO DE NIVEL ACADÉMICO -->
+            <div class="mb-3">
+              <label for="nivelacademico-editar" class="form-label">Semestre</label>
+              <select id="nivelacademico-editar" class="form-select form-select-sm" required>
+                <option value="">Seleccione</option>
+                <option value="1">Semestre 1</option>
+                <option value="2">Semestre 2</option>
+                <option value="3">Semestre 3</option>
+                <option value="4">Semestre 4</option>
+                <option value="5">Semestre 5</option>
+                <option value="6">Semestre 6</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"><i class="fa-solid fa-circle-xmark"></i> Cerrar</button>
+          <button type="submit" class="btn btn-outline-success btn-sm" id="guardar-alumno-editado"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -241,7 +324,33 @@
       $("#guardar-alumno").click(registrarAlumnos);
 
       //MODIFICAR
-      function modificarAlumnos(){}
+      $("#tabla-alumnos tbody").on("click", ".editar", function(){
+    if(confirm("¿Está seguro de modificar datos del alumno?")){
+        $.ajax({
+            url: '../controllers/alumno.controller.php',
+            type: 'POST',
+            data: {
+                operacion         : 'modificar',
+                apellidos         : $("#apellidos-editar").val(),
+                nombres           : $("#nombres-editar").val(),
+                dni               : $("#dni-editar").val(),
+                correo            : $("#correo-editar").val(),
+                telefono          : $("#telefono-editar").val(),
+                direccion         : $("#direccion-editar").val(),
+                nombrecarrera     : $("#nombrecarrera-editar").val(),
+                nivelacademico    : $("#nivelacademico-editar").val()
+            },
+            success: function(result){
+                if (result == ''){
+                    $("#formulario-alumnos")[0].reset();
+                    mostrarAlumnos();
+                    $("#modal-editar-alumnos").modal('hide');
+                }
+            }
+        });
+        $('#modal-editar-alumnos').modal('show'); // agrega esta línea para mostrar el modal
+    }
+});
 
       // Al pulsar click sobre el botón ROJO, se elimine el registro
       // Detectaremos eventos de losobjetos creados de manera asíncrona en...

@@ -60,26 +60,24 @@ if(isset($_POST['operacion'])){
   }
 
   // CREANDO LA OPCION DE MODIFICAR (UPDATE)
-  if($_POST['operacion'] == 'modificar'){
-
+  if($_POST['operacion'] == 'modificar') {
     // Paso 1: Recopilando los datos que la vista nos envía (FROM, utilizando AJAX)
     // $_POST: Esto es lo que se nos envía desde FORMULARIO (Modal)
+    $idalumno = $_POST['idalumno'];
     $datosForm = [
-      'idalumno'              => $_POST['idalumno'],
-      'apellidos'             => $_POST['apellidos'],
-      'nombres'               => $_POST['nombres'],
-      'dni'                   => $_POST['dni'],
-      'correo'                => $_POST['correo'],
-      'telefono'              => $_POST['telefono'],
-      'direccion'             => $_POST['direccion'],
-      'nombrecarrera'         => $_POST['nombrecarrera'],
-      'nivelacademico'        => $_POST['nivelacademico']
+        'apellidos' => $_POST['apellidos'],
+        'nombres' => $_POST['nombres'],
+        'dni' => $_POST['dni'],
+        'correo' => $_POST['correo'],
+        'telefono' => $_POST['telefono'],
+        'direccion' => $_POST['direccion'],
+        'nombrecarrera' => $_POST['nombrecarrera'],
+        'nivelacademico' => $_POST['nivelacademico']
     ];
-  
-    // Paso 2: Enviar el arreglo como parámetro del método modificar
-    $alumno->modificarAlumnos($datosForm);
-  
-  }
+    // Paso 2: Enviar los datos como parámetros separados del método modificar
+    $alumno->modificarAlumnos($idalumno, $datosForm);
+}
+
 
   if($_POST['operacion'] == 'eliminar'){
     $alumno->eliminarAlumnos($_POST['idalumno']);
