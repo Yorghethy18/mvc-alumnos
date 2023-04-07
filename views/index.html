@@ -11,8 +11,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-    <!-- Íconos de Bootstrap-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <!-- Íconos de Bootstrap
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"-->
 
   <!-- ÍCONOS FONTAWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,7 +36,7 @@
       <div class="card-body">
         <div class="table-responsive">
         <table class="table table-sm table-striped" id="tabla-alumnos">
-          <colgroup> <!-- Permite ordenar las tablas-->
+          <colgroup> <!-- colgroup: Permite ordenar las tablas -->
             <col width = "3%">
             <col width = "10%">
             <col width = "12%">
@@ -69,12 +69,13 @@
       </div>
     </div>
     <div class="card-footer text-end">
-        <button class="btn btn-warning btn-sm" id="actualizar">Actualizar alumnos</button>
+        <p  style="opacity: 0.5;">&copy; 2023 Yorghet Hernandez</p>
+        <!--<button class="btn btn-warning btn-sm" id="actualizar">Actualizar alumnos</button>-->
     </div>
   </div>
 </div> <!-- FIN DEL CONTAINER -->
 
-  <!-- ZONA DE MODAL -->
+  <!-- ZONA DE MODAL PARA REGISTRO DE ALUMNOS -->
   <div class="modal fade" id="modal-registro-alumnos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
       <div class="modal-content">
@@ -85,55 +86,56 @@
         <div class="modal-body">
           <form action="" id="formulario-alumnos" novalidate>
             <div class="mb-3">
-              <!-- CAMPO DE APELLIDOS -->
+              <!-- CAMPO DE APELLIDOS (modal-registro-alumnos) -->
               <label for="apellidos" class="form-label">Apellidos</label>
               <input type="text" class="form-control form-control-sm" id="apellidos" required>
             </div>
             
-            <!-- CAMPO DE NOMBRES -->
+            <!-- CAMPO DE NOMBRES (modal-registro-alumnos) -->
             <div class="mb-3">
               <label for="nombres" class="form-label">Nombres</label>
               <input type="text" class="form-control form-control-sm" id="nombres" required>
             </div>
             
-            <!-- CAMPO DE DNI -->
+            <!-- CAMPO DE DNI (modal-registro-alumnos) -->
             <div class="mb-3">
               <label for="dni" class="form-label">Dni</label>
               <input type="text" class="form-control form-control-sm" id="dni" required>
             </div>
             
-            <!-- CAMPO DE CORREO -->
+            <!-- CAMPO DE CORREO (modal-registro-alumnos) -->
             <div class="mb-3">
               <label for="correo" class="form-label">Correo</label>
               <input type="text" class="form-control form-control-sm" id="correo" required>
             </div>
 
-            <!-- CAMPO DE TELÉFONO -->
+            <!-- CAMPO DE TELÉFONO (modal-registro-alumnos) -->
             <div class="mb-3">
               <label for="telefono" class="form-label">Celular</label>
               <input type="text" class="form-control form-control-sm" id="telefono" required>
             </div>
             
-            <!-- CAMPO DE DIRECCIÓN -->
+            <!-- CAMPO DE DIRECCIÓN (modal-registro-alumnos) -->
             <div class="mb-3">
               <label for="direccion" class="form-label">Dirección</label>
               <input type="text" class="form-control form-control-sm" id="direccion" required>
             </div>
             
-            <!-- CAMPO DE NOMBRE DE LA CARRERA -->
+            <!-- CAMPO DE NOMBRE DE LA CARRERA (modal-registro-alumnos) -->
             <div class="mb-3">
               <label for="nombrecarrera" class="form-label">Carrera</label>
               <select id="nombrecarrera" class="form-select form-select-sm" required>
-                <option value="">Seleccione</option>
-                <option value="Ing Software con IA">Ing Software con IA</option>
-                <option value="Diseño Gráfico Digital">Diseño Gráfico Digital</option>
-                <option value="Administración Industrial">Administración Industrial</option>
-                <option value="Administración de Empresas">Administración de Empresas</option>
-                <option value="Mecánico Mantenimiento">Mecánico Mantenimiento</option>
+                <option value ="">Seleccione</option>
+                <option value ="Ing Software con IA">Ing Software con IA</option>
+                <option value ="Diseño Gráfico Digital">Diseño Gráfico Digital</option>
+                <option value ="Administración Industrial">Administración Industrial</option>
+                <option value ="Administración de Empresas">Administración de Empresas</option>
+                <option value ="Mecánico Mantenimiento">Mecánico Mantenimiento</option>
+                <option value ="Seguridad Industrial y Prevención de Riesgos">Seguridad Industrial y Prevención de Riesgos</option>
               </select>
             </div>
             
-            <!-- CAMPO DE NIVEL ACADÉMICO -->
+            <!-- CAMPO DE NIVEL ACADÉMICO (modal-registro-alumnos) -->
             <div class="mb-3">
               <label for="nivelacademico" class="form-label">Semestre</label>
               <select id="nivelacademico" class="form-select form-select-sm" required>
@@ -155,9 +157,8 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> <!-- FIN DE LA ZONA DEL MODAL PARA REGISTRO ALUMNOS -->
 
-  <!-- FIN DE LA ZONA DEL MODAL -->
 
    <!-- ZONA DE MODAL EDITAR ALUMNOS (UPDATE) -->
    <div class="modal fade" id="modal-editar-alumnos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
@@ -170,43 +171,43 @@
         <div class="modal-body">
           <form action="" id="formulario-alumnos" novalidate>
             <div class="mb-3">
-              <!-- CAMPO DE APELLIDOS -->
+              <!-- CAMPO DE APELLIDOS (modal-editar-alumnos) -->
               <label for="apellidos" class="form-label">Apellidos</label>
               <input type="text" class="form-control form-control-sm" id="apellidos-editar" required>
             </div>
             
-            <!-- CAMPO DE NOMBRES -->
+            <!-- CAMPO DE NOMBRES (modal-editar-alumnos) -->
             <div class="mb-3">
               <label for="nombres" class="form-label">Nombres</label>
               <input type="text" class="form-control form-control-sm" id="nombres-editar" required>
             </div>
             
-            <!-- CAMPO DE DNI -->
+            <!-- CAMPO DE DNI (modal-editar-alumnos) -->
             <div class="mb-3">
               <label for="dni" class="form-label">Dni</label>
               <input type="text" class="form-control form-control-sm" id="dni-editar" required>
             </div>
             
-            <!-- CAMPO DE CORREO -->
+            <!-- CAMPO DE CORREO (modal-editar-alumnos) -->
             <div class="mb-3">
               <label for="correo" class="form-label">Correo</label>
               <input type="text" class="form-control form-control-sm" id="correo-editar" required>
             </div>
 
 
-            <!-- CAMPO DE TELÉFONO -->
+            <!-- CAMPO DE TELÉFONO (modal-editar-alumnos) -->
             <div class="mb-3">
               <label for="telefono" class="form-label">Celular</label>
               <input type="text" class="form-control form-control-sm" id="telefono-editar" required>
             </div>
             
-            <!-- CAMPO DE DIRECCIÓN -->
+            <!-- CAMPO DE DIRECCIÓN (modal-editar-alumnos) -->
             <div class="mb-3">
               <label for="direccion" class="form-label">Dirección</label>
               <input type="text" class="form-control form-control-sm" id="direccion-editar" required>
             </div>
             
-            <!-- CAMPO DE NOMBRE DE LA CARRERA -->
+            <!-- CAMPO DE NOMBRE DE LA CARRERA (modal-editar-alumnos) -->
             <div class="mb-3">
               <label for="nombrecarrera-editar" class="form-label">Carrera</label>
               <select id="nombrecarrera-editar" class="form-select form-select-sm" required>
@@ -219,7 +220,7 @@
               </select>
             </div>
             
-            <!-- CAMPO DE NIVEL ACADÉMICO -->
+            <!-- CAMPO DE NIVEL ACADÉMICO (modal-editar-alumnos) -->
             <div class="mb-3">
               <label for="nivelacademico-editar" class="form-label">Semestre</label>
               <select id="nivelacademico-editar" class="form-select form-select-sm" required>
@@ -241,7 +242,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> <!-- FIN DE LA ZONA DE MODAL PARA EDITAR ALUMNOS (UPDATE) -->
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -270,7 +271,7 @@
         });
       }
 
-      // Registrar un curso
+      // FUNCIÓN PARA REGISTRAR LOS ALUMNOS
       function registrarAlumnos(){
     // Validar campos de formulario
       const apellidos       = $("#apellidos").val();
@@ -281,7 +282,8 @@
       const direccion       = $("#direccion").val();
       const nombrecarrera   = $("#nombrecarrera").val();
       const nivelacademico  = $("#nivelacademico").val();
-
+  
+  // Verificando que todos los campos del formulario estén completas, caso contrario mostrará un mensaje de alerta (VALIDACIÓN)
   if (!apellidos || !nombres || !dni || !correo || !telefono || !direccion || !nombrecarrera || !nivelacademico) {
     alert('Por favor, complete todos los campos');
     return;
@@ -323,7 +325,7 @@
       //Evento
       $("#guardar-alumno").click(registrarAlumnos);
 
-      //MODIFICAR
+      //MODIFICAR ALUMNOS
       $("#tabla-alumnos tbody").on("click", ".editar", function(){
     if(confirm("¿Está seguro de modificar datos del alumno?")){
         $.ajax({
@@ -353,7 +355,7 @@
 });
 
       // Al pulsar click sobre el botón ROJO, se elimine el registro
-      // Detectaremos eventos de losobjetos creados de manera asíncrona en...
+      // Detectaremos eventos de los objetos creados de manera asíncrona en...
      $("#tabla-alumnos tbody").on("click", ".eliminar", function(){
       const idalumnoEliminar = $(this).data("idalumno");
       if (confirm("¿Está seguro de proceder?")){
@@ -372,8 +374,6 @@
         });
       }
      });
-
-     
 
       // Ejecución automática
       mostrarAlumnos();

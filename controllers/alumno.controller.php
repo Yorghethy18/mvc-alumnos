@@ -65,19 +65,18 @@ if(isset($_POST['operacion'])){
     // $_POST: Esto es lo que se nos envía desde FORMULARIO (Modal)
     $idalumno = $_POST['idalumno'];
     $datosForm = [
-        'apellidos' => $_POST['apellidos'],
-        'nombres' => $_POST['nombres'],
-        'dni' => $_POST['dni'],
-        'correo' => $_POST['correo'],
-        'telefono' => $_POST['telefono'],
-        'direccion' => $_POST['direccion'],
-        'nombrecarrera' => $_POST['nombrecarrera'],
-        'nivelacademico' => $_POST['nivelacademico']
+        'apellidos'       => $_POST['apellidos'],
+        'nombres'         => $_POST['nombres'],
+        'dni'             => $_POST['dni'],
+        'correo'          => $_POST['correo'],
+        'telefono'        => $_POST['telefono'],
+        'direccion'       => $_POST['direccion'],
+        'nombrecarrera'   => $_POST['nombrecarrera'],
+        'nivelacademico'  => $_POST['nivelacademico']
     ];
     // Paso 2: Enviar los datos como parámetros separados del método modificar
     $alumno->modificarAlumnos($idalumno, $datosForm);
 }
-
 
   if($_POST['operacion'] == 'eliminar'){
     $alumno->eliminarAlumnos($_POST['idalumno']);

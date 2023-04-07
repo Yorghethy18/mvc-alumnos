@@ -15,7 +15,7 @@ class Alumno extends Conexion{
   }
     // MÉTODOS PARA LISTAR, REGISTRAR Y ELIMINAR EN LA TABLA ALUMNOS
    
-    // Listar
+    // FUNCIÓN LISTAR ALUMNOS
    public function listarAlumnos(){
     try {
       // 1. Preparamos la consulta
@@ -30,7 +30,7 @@ class Alumno extends Conexion{
     }
    }
 
-   // Registrar
+   // FUNCIÓN REGISTRAR ALUMNOS
    public function registrarAlumnos($datos = []){
     try {
       // 1. Preparamos la consulta
@@ -54,21 +54,9 @@ class Alumno extends Conexion{
       die($e->getMessage());
     }
    }
-
-   // Eliminar
-   public function eliminarAlumnos($idalumno = 0){
-    try {
-      $consulta = $this->accesoBD->prepare("CALL spu_alumnos_eliminar(?)");
-      $consulta->execute(array($idalumno));
-    } 
-    catch (Exception $e) {
-      die($e->getMessage());
-    }
-   }
-
-   // Actualizar
-   public function modificarAlumnos($idalumno, $datos = [])
-{
+   
+   // FUNCIÓN MODIFICAR ALUMNOS
+   public function modificarAlumnos($idalumno, $datos = []){
     try {
         $consulta = $this->accesoBD->prepare("CALL spu_alumnos_modificar(?,?,?,?,?,?,?,?,?)");
         $consulta->execute(
@@ -87,11 +75,17 @@ class Alumno extends Conexion{
     } catch (Exception $e) {
         die($e->getMessage());
     }
-}
-
-
-
-
+  }
+   // FUNCIÓN ELIMINAR ALUMNOS
+   public function eliminarAlumnos($idalumno = 0){
+    try {
+      $consulta = $this->accesoBD->prepare("CALL spu_alumnos_eliminar(?)");
+      $consulta->execute(array($idalumno));
+    } 
+    catch (Exception $e) {
+      die($e->getMessage());
+    }
+   }
 
 }
 
