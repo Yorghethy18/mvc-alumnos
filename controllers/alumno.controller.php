@@ -6,6 +6,7 @@ if(isset($_POST['operacion'])){
 
   $alumno = new Alumno();
 
+  // OPERACION listar
   if($_POST['operacion'] == 'listar'){
 
     $datosObtenidos = $alumno->listarAlumnos();
@@ -39,6 +40,7 @@ if(isset($_POST['operacion'])){
 
   }
 
+  // OPERACION registrar
   if($_POST['operacion'] == 'registrar') {
 
     // PAso 1: Recopilando los datos que la vista nos envía (FROM, utilizando AJAX)
